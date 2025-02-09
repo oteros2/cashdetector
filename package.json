@@ -17,7 +17,8 @@
     "react-native-paper": "^5.13.1",
     "react-native-safe-area-context": "^5.2.0",
     "react-native-screens": "^4.6.0",
-    "react-native-vector-icons": "^10.2.0"
+    "react-native-vector-icons": "^10.2.0",
+    "react-native-vision-camera": "^4.6.3"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

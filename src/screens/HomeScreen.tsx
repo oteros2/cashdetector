@@ -27,9 +27,10 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       <View style={styles.buttonContainer}>
         <Button 
         icon="camera" 
-        mode="contained" 
+        mode="elevated" 
         onPress={() => detectButtonPress()}
         style={styles.button}
+        labelStyle={styles.buttonText}
         >
           Detect Cash
         </Button>
@@ -65,10 +66,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#9EDF9C",
   },
   buttonText: {
-    color: "white",
+    color: "#FFFFFF",
     fontSize: 18,
     fontWeight: "bold",
-    textAlign: "center",
   },
 });
 
