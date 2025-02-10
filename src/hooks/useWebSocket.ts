@@ -30,7 +30,7 @@ const useWebSocket = (url: string) => {
   const sendData = (data: ArrayBufferLike) => {
     // Consultar si la conexión WebSocket está abierta
     if (socket && socket.readyState === WebSocket.OPEN) {
-      // Convertir el ArrayBuffer a Uint8Array
+      // Convertir el ArrayBuffer a Uint8Array y enviar al servidor
       const uint8Array = new Uint8Array(data);  
       socket.send(uint8Array.buffer); 
     }

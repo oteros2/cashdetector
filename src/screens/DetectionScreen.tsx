@@ -17,24 +17,41 @@ const Detection: React.FC<DetectionScreenProps> = ({ navigation }) => {
   const { hasPermission, requestPermission } = useCameraPermission();
   // Hook para acceder a la cámara trasera
   const device = useCameraDevice('back');
-  // Referencia a la cámara
+   // Referencia a la cámara para acceder a sus métodos
   const camera = useRef<Camera>(null);
   // Hook para obtener el formato de la cámara 
   const format = useCameraFormat(device, Templates.Snapchat);
-  // Enviar datos a un servidor a través de WebSocket
-  const { sendData } = useWebSocket('ws://172.17.0.1:8765');
-  // Estado para almacenar la URI de la foto
+  // Hook para enviar datos a un servidor a través de WebSocket
+  const { data, sendData } = useWebSocket('ws://192.168.1.145:8765');
+  // Hook para almacenar la URI de la foto tomada
   const [photoUri, setPhotoUri] = useState<string | null>(null);
 
   useEffect(() => {
-    // Si no hay permiso de cámara, solicitar
+    //Si no hay permiso de cámara, solicitar
     if (!hasPermission) {
       requestPermission();
     }
   }, [hasPermission]);
 
-  // Si no hay permiso de cámara o no hay cámara, mostrar pantalla de no hay cámara
+  useEffect(() => {
+    if (data) {
+      try {
+        // Parsear la respuesta del servidor
+        const response = JSON.parse(data);
+        // Navegar a la pantalla de resultados con la imagen y el total obtenidos
+        navigation.navigate('results', {
+          imageBase64: response.imagen_base64,
+          total: response.total,
+          loading: false
+        });
+      } catch (error) {
+        console.error('Error parsing WebSocket response:', error);
+      }
+    }
+  }, [data, navigation]);
+
   if (!hasPermission || device == null) {
+    // Si no hay permiso de cámara o el dispositivo no tiene cámara, mostrar pantalla de no hay cámara
     return <NoCameraScreen navigation={navigation} />;
   }
 
@@ -42,18 +59,22 @@ const Detection: React.FC<DetectionScreenProps> = ({ navigation }) => {
   const takePicture = async () => {
     if (camera.current) {
       try {
+        // Navegar a la pantalla de resultados con la imagen y el total obtenidos
+        navigation.navigate('results', {
+          imageBase64: '',
+          total: 0,
+          loading: true
+        });
+        // Toma una foto y la almacena en la URI
         const photo = await camera.current.takePhoto();
         setPhotoUri(photo.path);
-
-        // Leer el archivo de la foto y convertirlo en binario
         const response = await fetch(`file://${photo.path}`);
-        // Converir la respuesta en un ArrayBuffer
-        const arrayBuffer = await response.arrayBuffer(); 
-
-        // Enviar la información en binario al servidor
-        sendData(arrayBuffer); 
+        // Convierte la imagen en un arrayBuffer y la envía al servidor
+        const arrayBuffer = await response.arrayBuffer();
+        sendData(arrayBuffer);
       } catch (error) {
-        console.error('Error al tomar la foto:', error);
+        // Ir hatra atrás en caso de error
+        navigation.goBack();
       }
     }
   };
