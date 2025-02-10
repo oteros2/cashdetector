@@ -24,7 +24,7 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ navigation, route }) => {
           />
           <View style={styles.resultContainer}>
             <Text style={styles.totalLabel}>Total Cash:</Text>
-            <Text style={styles.totalCash}>${total}</Text>
+            <Text style={styles.totalCash}>{total}</Text>
           </View>
           <View style={styles.buttonContainer}>
             <Button
