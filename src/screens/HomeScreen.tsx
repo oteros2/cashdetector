@@ -26,7 +26,6 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 
       <View style={styles.buttonContainer}>
         <Button 
-        icon="camera" 
         mode="elevated" 
         onPress={() => detectButtonPress()}
         style={styles.button}

@@ -22,7 +22,6 @@ const NoCameraScreen: React.FC<NoCameraScreenProps> = ({ navigation }) => {
       <Text style={styles.subtitle}>Please check your camera connection or accept camera permissions and try again.</Text>
       <View style={styles.buttonContainer}>
         <Button 
-          icon="arrow-left" 
           mode="elevated" 
           onPress={() => navigation.goBack()}
           style={styles.button}
