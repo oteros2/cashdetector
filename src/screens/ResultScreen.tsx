@@ -8,7 +8,7 @@ import { RootStackParamList } from '../App';
 type ResultsScreenProps = NativeStackScreenProps<RootStackParamList, 'results'>;
 
 const ResultsScreen: React.FC<ResultsScreenProps> = ({ navigation, route }) => {
-    // Recibe del servidor la imagen y el total
+  // Recibe del servidor la imagen y el total
   const { imageBase64, total, loading } = route.params;
 
   return (

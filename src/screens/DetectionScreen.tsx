@@ -22,7 +22,7 @@ const Detection: React.FC<DetectionScreenProps> = ({ navigation }) => {
   // Hook para obtener el formato de la cámara 
   const format = useCameraFormat(device, Templates.Snapchat);
   // Hook para enviar datos a un servidor a través de WebSocket
-  const { data, sendData } = useWebSocket('ws://192.168.1.145:8765');
+  const { data, sendData } = useWebSocket('ws://192.168.1.145:8765', navigation);
   // Hook para almacenar la URI de la foto tomada
   const [photoUri, setPhotoUri] = useState<string | null>(null);
 
@@ -45,7 +45,8 @@ const Detection: React.FC<DetectionScreenProps> = ({ navigation }) => {
           loading: false
         });
       } catch (error) {
-        console.error('Error parsing WebSocket response:', error);
+        // ir a pantalla de error
+        navigation.navigate('error');
       }
     }
   }, [data, navigation]);
@@ -73,8 +74,8 @@ const Detection: React.FC<DetectionScreenProps> = ({ navigation }) => {
         const arrayBuffer = await response.arrayBuffer();
         sendData(arrayBuffer);
       } catch (error) {
-        // Ir hatra atrás en caso de error
-        navigation.goBack();
+        // Ir a pantalla de error
+        navigation.navigate('error');
       }
     }
   };

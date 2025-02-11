@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 // Hook para manejar la comunicación con un servidor WebSocket
-const useWebSocket = (url: string) => {
+const useWebSocket = (url: string, navigation : any) => {
   // Estado para almacenar la conexión WebSocket
   const [socket, setSocket] = useState<WebSocket | null>(null);
   // Estado para manejar la informacion 
@@ -12,10 +12,9 @@ const useWebSocket = (url: string) => {
     const ws = new WebSocket(url);
 
     // Manejar eventos
-    ws.onopen = () => console.log('WebSocket conectado');
     ws.onmessage = (event) => setdata(event.data);
-    ws.onerror = (error) => console.log('WebSocket error:', error);
-    ws.onclose = () => console.log('WebSocket desconectado');
+    ws.onerror = (error) => navigation.navigate('error');
+
 
     // Guardar la conexión en el estado
     setSocket(ws);

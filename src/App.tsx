@@ -7,6 +7,7 @@ import { PaperProvider } from 'react-native-paper';
 import Detection from './screens/DetectionScreen';
 import NoCameraScreen from './screens/NoCameraScreen';
 import ResultsScreen from './screens/ResultScreen';
+import ErrorScreen from './screens/ErrorScreen';
 
 // Definir el tipo para los parámetros de navegación
 export type RootStackParamList = {
@@ -18,6 +19,7 @@ export type RootStackParamList = {
         total: number;
         loading: boolean;
     };
+    error: undefined
 };
 
 // Crear el stack con el tipo definido
@@ -46,6 +48,11 @@ const App = () => {
                     <Stack.Screen 
                         name="results" 
                         component={ResultsScreen} 
+                        options={{ headerShown: false }} 
+                    />
+                    <Stack.Screen 
+                        name="error" 
+                        component={ErrorScreen} 
                         options={{ headerShown: false }} 
                     />
                 </Stack.Navigator>
