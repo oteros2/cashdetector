@@ -4,7 +4,7 @@ import { Button } from "react-native-paper";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../App";
 
-type ErrorScreenNavigationProp = NativeStackNavigationProp<RootStackParamList>;
+export type ErrorScreenNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 interface ErrorScreenProp {
   navigation: ErrorScreenNavigationProp;

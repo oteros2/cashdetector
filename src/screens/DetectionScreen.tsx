@@ -13,6 +13,8 @@ interface DetectionScreenProps {
 }
 
 const Detection: React.FC<DetectionScreenProps> = ({ navigation }) => {
+  const IP = '192.168.2.3'
+  const PORT = '8765'
   // Hook para solicitar permiso de la cámara
   const { hasPermission, requestPermission } = useCameraPermission();
   // Hook para acceder a la cámara trasera
@@ -22,7 +24,7 @@ const Detection: React.FC<DetectionScreenProps> = ({ navigation }) => {
   // Hook para obtener el formato de la cámara 
   const format = useCameraFormat(device, Templates.Snapchat);
   // Hook para enviar datos a un servidor a través de WebSocket
-  const { data, sendData } = useWebSocket('ws://192.168.1.145:8765', navigation);
+  const { data, sendData } = useWebSocket(`ws://${IP}:${PORT}`, navigation);
   // Hook para almacenar la URI de la foto tomada
   const [photoUri, setPhotoUri] = useState<string | null>(null);
 
