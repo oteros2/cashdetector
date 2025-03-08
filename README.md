@@ -1,79 +1,35 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+Proyecto de Aplicación
 
-# Getting Started
+Descripción
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+El proyecto consiste en una app diseñada en react native que se conecta a un servidor mediante sockets y envia fotografias tomadas con la camara del dispositivo, el servidor utiliza un modelo de inteligencia artificial yolo entrenado para la deteccion de billetes de euros, una vez el servidor recibe la imagen la analiza detecta los billetes que hay en la imagen los etiqueta, suma la cantidad de dinero que hay en la imagen y la devuelve al cliente para mostrarla.
 
-## Step 1: Start the Metro Server
+Cumplimiento de Objetivos
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+1. Creación de Componentes Adaptados a la Aplicación
 
-To start Metro, run the following command from the _root_ of your React Native project:
+✔ Implementación de componentes reutilizables y modulares.
+✔ Adaptación de los componentes a los requerimientos específicos de la aplicación.
 
-```bash
-# using npm
-npm start
+2. Diseño del Menú y Gestión entre Pantallas 
 
-# OR using Yarn
-yarn start
-```
+✔ Creación de un menú intuitivo y funcional.
+✔ Implementación de navegación fluida entre pantallas.
 
-## Step 2: Start your Application
+3. Uso de Datos Externos
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+✔ Integración correcta de datos externos en la aplicación.
+✔ Manejo eficiente de la asincronía y errores en la carga de datos.
 
-### For Android
+4. Creación de Componentes Dinámicos
 
-```bash
-# using npm
-npm run android
+✔ Implementación de componentes que se adapten a los datos recibidos.
+✔ Correcta actualización de los componentes al recibir nueva información.
 
-# OR using Yarn
-yarn android
-```
+5. Uso de Contextos Definidos (2 puntos)
 
-### For iOS
+✖ No se ha implementado el uso de contextos, ya que en este proyecto no es necesario. La gestión del estado y la comunicación entre componentes se ha realizado de manera eficiente sin la necesidad de contextos.
 
-```bash
-# using npm
-npm run ios
+Conclusión
 
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+El proyecto cumple con todos los objetivos evaluables, excepto el uso de contextos, que no se ha considerado necesario en esta implementación.
